@@ -1,6 +1,16 @@
 import pyb, micropython, esc, rc, staccel
-micropython.alloc_emergency_exception_buf(100)
+micropython.alloc_emergency_exception_buf(100) # to show exception buffer error in console
 
+"""
+initialize the controller with:
+- a RadioController
+- a esc array
+- a PID array
+
+Ucons: setpoint array
+Usens: sensor array
+U: command array
+"""
 class flight(object):
     def __init__(self):
         self.esc = esc.esc()

@@ -1,7 +1,3 @@
-import pyb
-import micropython
-micropython.alloc_emergency_exception_buf(100)
-
 """
 capture values of a 4-channels RC receiver
 each channel give a PWM signal with a 125Hz frequency and a 12.5 to 25% duty-cycle
@@ -9,15 +5,12 @@ each channel give a PWM signal with a 125Hz frequency and a 12.5 to 25% duty-cyc
 class rc(object):
     def __init__(self):
         _rcPins = [0, 1, 2, 3]
-        self.RC = [None]*4
         self.ic_pin = [None]*4
         self.ic = [None]*4
-        self.range = [0, 1, 2, 3]
         self.t5 = pyb.Timer(5, prescaler=83, period=0x0fffffff)
         self.ic_start = [0]*4
         self.ic_width = [0]*4
-        for i in self.range:
-            self.i = i
+        for i in range(4):
             self.ic_pin[i] = pyb.Pin('PA%s'%_rcPins[i])
             self.ic[i] = self.t5.channel(i+1, pyb.Timer.IC, pin=self.ic_pin[i], polarity=pyb.Timer.BOTH)
         self.set_callback()

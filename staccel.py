@@ -1,3 +1,5 @@
+# original staccel.py from micropython
+
 """
 Driver for accelerometer on STM32F4 Discover board.
 

@@ -2,6 +2,10 @@ import pyb
 import micropython
 micropython.alloc_emergency_exception_buf(100)
 
+"""
+capture values of a 4-channels RC receiver
+each channel give a PWM signal with a 125Hz frequency and a 12.5 to 25% duty-cycle
+"""
 class rc(object):
     def __init__(self):
         _rcPins = [0, 1, 2, 3]

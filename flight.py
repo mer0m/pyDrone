@@ -34,6 +34,8 @@ class flight(object):
 
             for i in [0, 1, 2, 3]:
                 self.Uc[i] = self.Ucons[i] - self.Usens[i]
+
+	    #TODO real PID
             
             self.U[0] = min(100, max( 0, -self.Kyaw*self.Uc[0] + self.Kpitch*self.Uc[1] + self.Kthrust*self.Uc[2] + self.Kroll*self.Uc[3]))
             self.U[1] = min(100, max( 0,  self.Kyaw*self.Uc[0] + self.Kpitch*self.Uc[1] + self.Kthrust*self.Uc[2] - self.Kroll*self.Uc[3]))
